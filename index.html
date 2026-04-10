@@ -129,62 +129,90 @@
     </div>
 
     <script>
-        // --- 1. DỮ LIỆU TƯỚNG (Bạn có thể thêm tướng mới tại đây) ---
-        const championData = {
-            "Mordekaiser": {
-                name: "Mordekaiser",
-                build: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Giáp Gai", "Mặt Nạ Đọa Đày Liandry"],
-                augments: ["Siêu Công Nghệ", "Khổng Lồ Hóa", "Hỏa Khuẩn", "Vòng Tròn Tử Vong"],
-                runes: ["Chinh Phục", "Đắc Thắng", "Kháng Hiệu Ứng", "Chốt Chặn Cuối Cùng"]
-            },
-            "Aali": {
-                name: "Akali",
-                build: ["Quyền Trượng Ác Thần", "Ngọn Ngọn Đuốc Icathia", "Mặt Nạ Đọa Đày"],
-                augments: ["Sát Thủ Săn Đuổi", "Kiếm Phép"],
-                runes: ["Sốc Điện", "Tác Động Bất Chợt"]
-            }
-            // Thêm tướng khác theo cấu trúc này
-        };
+       // --- 1. THƯ VIỆN TƯỚNG (Bạn thêm tướng mới vào đây) ---
+const championData = {
+    "Mordekaiser": {
+        name: "Mordekaiser",
+        build: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Giáp Gai"],
+        augments: ["Siêu Công Nghệ", "Khổng Lồ Hóa", "Hỏa Khuẩn"],
+        runes: ["Chinh Phục", "Đắc Thắng"]
+    },
+    "Malphite": {
+        name: "Malphite",
+        build: ["Quyền Trượng Ác Thần", "Ngọn Đuốc Icathia", "Mũ Phù Thủy Rabadon", "Kính Nhắm Bất Ngờ"],
+        augments: ["Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"],
+        runes: ["Thu Thập Hắc Ám", "Tác Động Bất Chợt"]
+    },
+    "Yasuo": {
+        name: "Yasuo",
+        build: ["Nỏ Tử Thủ", "Vô Cực Kiếm", "Vũ Điệu Tử Thần"],
+        augments: ["Song Kiếm", "Lưỡi Dao Chết Chóc"],
+        runes: ["Nhịp Độ Chết Người"]
+    }
+    // Muốn thêm tướng nào, bạn cứ copy cụm trên rồi đổi tên là xong!
+};
 
-        // --- 2. LOGIC BẢO MẬT ---
-        function checkPass() {
-            const pass = document.getElementById('passwordInput').value;
-            if (pass === "123456") {
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-            } else {
-                alert("Sai mật khẩu rồi bạn ơi!");
-            }
+// --- 2. LOGIC BẢO MẬT ---
+function checkPass() {
+    const pass = document.getElementById('passwordInput').value;
+    if (pass === "123456") {
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        showAllChampions(); // Hiện sẵn danh sách tướng khi vừa vào
+    } else {
+        alert("Sai mật khẩu rồi Phúc ơi!");
+    }
+}
+
+// --- 3. LOGIC TÌM KIẾM CẢI TIẾN ---
+function liveSearch() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = "";
+
+    // Nếu xóa trắng ô tìm kiếm thì hiện lại toàn bộ danh sách
+    if (query === "") {
+        showAllChampions();
+        return;
+    }
+
+    for (let key in championData) {
+        if (key.toLowerCase().includes(query)) {
+            renderCard(key);
         }
+    }
+}
 
-        // --- 3. LOGIC TÌM KIẾM ---
-        function liveSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const resultsContainer = document.getElementById('search-results');
-            resultsContainer.innerHTML = "";
+// Hiện toàn bộ tướng có trong dữ liệu
+function showAllChampions() {
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = "";
+    for (let key in championData) {
+        renderCard(key);
+    }
+}
 
-            if (query === "") return;
-
-            for (let key in championData) {
-                if (key.toLowerCase().includes(query)) {
-                    const champ = championData[key];
-                    // Link ảnh từ Riot API
-                    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
-                    
-                    const card = document.createElement('div');
-                    card.className = "info-card";
-                    card.style.cursor = "pointer";
-                    card.innerHTML = `
-                        <div style="display:flex; align-items:center; gap:15px;">
-                            <img src="${imgUrl}" style="width:50px; border-radius:5px; border:1px solid gold;">
-                            <strong style="color:var(--primary-gold)">${champ.name}</strong>
-                        </div>
-                    `;
-                    card.onclick = () => showDetail(key);
-                    resultsContainer.appendChild(card);
-                }
-            }
-        }
+// Hàm vẽ thẻ tướng
+function renderCard(key) {
+    const resultsContainer = document.getElementById('search-results');
+    const champ = championData[key];
+    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
+    
+    const card = document.createElement('div');
+    card.className = "info-card";
+    card.style.cursor = "pointer";
+    card.style.transition = "0.2s";
+    card.innerHTML = `
+        <div style="display:flex; align-items:center; gap:15px;">
+            <img src="${imgUrl}" style="width:50px; border-radius:5px; border:1px solid #c8aa6e;" onerror="this.src='https://via.placeholder.com/50?text=No+Img'">
+            <strong style="color:#c8aa6e; font-size: 1.2em;">${champ.name}</strong>
+        </div>
+    `;
+    card.onmouseover = () => card.style.borderColor = "#c8aa6e";
+    card.onmouseout = () => card.style.borderColor = "#3c3c41";
+    card.onclick = () => showDetail(key);
+    resultsContainer.appendChild(card);
+}
 
         // --- 4. HIỂN THỊ CHI TIẾT ---
         function showDetail(key) {
