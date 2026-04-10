@@ -133,23 +133,154 @@
 const championData = {
     "Mordekaiser": {
         name: "Mordekaiser",
-        build: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Giáp Gai"],
-        augments: ["Siêu Công Nghệ", "Khổng Lồ Hóa", "Hỏa Khuẩn"],
-        runes: ["Chinh Phục", "Đắc Thắng"]
+        build: ["Quyền Trượng Ác Thần", "Trượng Pha Lê Rylai", "Giáp Tâm Linh", "Mặt Nạ Liandry"],
+        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Siêu Công Nghệ", "Vòng Tròn Tử Vong"]
     },
     "Malphite": {
         name: "Malphite",
-        build: ["Quyền Trượng Ác Thần", "Ngọn Đuốc Icathia", "Mũ Phù Thủy Rabadon", "Kính Nhắm Bất Ngờ"],
-        augments: ["Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"],
-        runes: ["Thu Thập Hắc Ám", "Tác Động Bất Chợt"]
+        build: ["Quyền Trượng Ác Thần", "Ngọn Đuốc Icathia", "Mũ Phù Thủy", "Đồng Hồ Cát"],
+        augments: ["Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"]
+    },
+    "Aatrox": {
+        name: "Aatrox",
+        build: ["Nguyệt Thần", "Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa"]
+    },
+    "Akali": {
+        name: "Akali",
+        build: ["Quyền Trượng Ác Thần", "Cá Kiếm", "Mặt Nạ Đọa Đày", "Đồng Hồ Cát"],
+        augments: ["Sát Thủ Săn Đuổi", "Kiếm Phép", "Biến Ảo"]
     },
     "Yasuo": {
         name: "Yasuo",
-        build: ["Nỏ Tử Thủ", "Vô Cực Kiếm", "Vũ Điệu Tử Thần"],
-        augments: ["Song Kiếm", "Lưỡi Dao Chết Chóc"],
-        runes: ["Nhịp Độ Chết Người"]
+        build: ["Nỏ Tử Thủ", "Vô Cực Kiếm", "Gươm Suy Vong", "Vũ Điệu Tử Thần"],
+        augments: ["Song Kiếm", "Lưỡi Dao Chết Chóc", "Cuồng Huyết"]
+    },
+    "Yone": {
+        name: "Yone",
+        build: ["Gươm Suy Vong", "Vô Cực Kiếm", "Nỏ Tử Thủ", "Vũ Điệu Tử Thần"],
+        augments: ["Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Lưỡi Dao Chết Chóc"]
+    },
+    "Lux": {
+        name: "Lux",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy", "Kính Nhắm Bất Ngờ"],
+        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật"]
+    },
+    "Sett": {
+        name: "Sett",
+        build: ["Rìu Đại Mãng Xà", "Móng Vuốt Sterak", "Giáp Liệt Sĩ", "Giáp Gai"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng"]
+    },
+    "MasterYi": {
+        name: "Master Yi",
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Đao Tím", "Giáp Thiên Thần"],
+        augments: ["Ảo Ảnh", "Song Kiếm", "Cuồng Huyết"]
+    },
+    "LeeSin": {
+        name: "Lee Sin",
+        build: ["Rìu Đen", "Nguyệt Thần", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak"],
+        augments: ["Kiếm Phép", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"]
+    },
+    "Vayne": {
+        name: "Vayne",
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Đao Tím"],
+        augments: ["Song Kiếm", "Tốc Độ Kinh Hoàng", "Biến Ảo"]
+    },
+    "Jinx": {
+        name: "Jinx",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Cuồng Cung Runaan", "Nỏ Thần Dominik"],
+        augments: ["Đạn Nổ", "Tăng Tốc", "Song Kiếm"]
+    },
+    "Veigar": {
+        name: "Veigar",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy", "Đồng Hồ Cát", "Trượng Hư Vô"],
+        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật"]
+    },
+    "Katarina": {
+        name: "Katarina",
+        build: ["Nanh Nashor", "Quyền Trượng Ác Thần", "Mũ Phù Thủy", "Cá Kiếm"],
+        augments: ["Biến Ảo", "Ảo Ảnh", "Hỏa Khuẩn"]
+    },
+    "Zed": {
+        name: "Zed",
+        build: ["Kiếm Ma Youmuu", "Nguyên Tố Luân", "Áo Choàng Bóng Tối", "Rìu Đen"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Lõi Công Nghệ"]
+    },
+    "Darius": {
+        name: "Darius",
+        build: ["Chùy Phản Kích", "Rìu Đen", "Móng Vuốt Sterak", "Giáp Liệt Sĩ"],
+        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Phản Đòn"]
+    },
+    "Garen": {
+        name: "Garen",
+        build: ["Chùy Phản Kích", "Rìu Đen", "Giáp Liệt Sĩ", "Móng Vuốt Sterak"],
+        augments: ["Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật", "Phản Đòn"]
+    },
+    "Ahri": {
+        name: "Ahri",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy", "Đồng Hồ Cát"],
+        augments: ["Biến Ảo", "Pháp Sư Đa Chú", "Hỏa Khuẩn"]
+    },
+    "Ezreal": {
+        name: "Ezreal",
+        build: ["Tam Hợp Kiếm", "Thần Kiếm Muramana", "Thương Phục Hận", "Rìu Đen"],
+        augments: ["Kiếm Phép", "Lõi Công Nghệ", "Tốc Độ Kinh Hoàng"]
+    },
+    "KaiSa": {
+        name: "KaiSa",
+        build: ["Móc Diệt Thủy Quái", "Cuồng Đao Guinsoo", "Nanh Nashor", "Đồng Hồ Cát"],
+        augments: ["Ảo Ảnh", "Song Kiếm", "Biến Ảo"]
+    },
+    "Nautilus": {
+        name: "Nautilus",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong"]
+    },
+    "Pyke": {
+        name: "Pyke",
+        build: ["Kiếm Ma Youmuu", "Áo Choàng Bóng Tối", "Thương Phục Hận", "Kiếm Âm U"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Tốc Độ Kinh Hoàng"]
+    },
+    "Sylas": {
+        name: "Sylas",
+        build: ["Quyền Trượng Ác Thần", "Đồng Hồ Cát", "Mũ Phù Thủy", "Trượng Hư Vô"],
+        augments: ["Kiếm Phép", "Cuồng Huyết", "Hỏa Khuẩn"]
+    },
+    "Thresh": {
+        name: "Thresh",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Lời Thề Hiệp Sĩ", "Tụ Bão Zeke"],
+        augments: ["Phản Đòn", "Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật"]
+    },
+    "Volibear": {
+        name: "Volibear",
+        build: ["Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Nanh Nashor", "Giáp Gai"],
+        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Phản Đòn"]
+    },
+    "Jax": {
+        name: "Jax",
+        build: ["Tam Hợp Kiếm", "Gươm Suy Vong", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak"],
+        augments: ["Kiếm Phép", "Cuồng Huyết", "Song Kiếm"]
+    },
+    "Samira": {
+        name: "Samira",
+        build: ["Nỏ Tử Thủ", "Súng Hải Tặc", "Vô Cực Kiếm", "Vũ Điệu Tử Thần"],
+        augments: ["Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Biến Ảo"]
+    },
+    "Vi": {
+        name: "Vi",
+        build: ["Rìu Đen", "Chùy Phản Kích", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng"]
+    },
+    "Caitlyn": {
+        name: "Caitlyn",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Đại Bác Liên Thanh", "Nỏ Thần Dominik"],
+        augments: ["Đạn Nổ", "Tốc Độ Kinh Hoàng", "Song Kiếm"]
+    },
+    "Brand": {
+        name: "Brand",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy"],
+        augments: ["Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật"]
     }
-    // Muốn thêm tướng nào, bạn cứ copy cụm trên rồi đổi tên là xong!
 };
 
 // --- 2. LOGIC BẢO MẬT ---
@@ -215,37 +346,32 @@ function renderCard(key) {
 }
 
         // --- 4. HIỂN THỊ CHI TIẾT ---
-        function showDetail(key) {
-            const champ = championData[key];
-            const detailView = document.getElementById('detail-view');
-            const searchView = document.getElementById('search-view');
-            const content = document.getElementById('detail-content');
-            const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
+       function showDetail(key) {
+    const champ = championData[key];
+    const detailView = document.getElementById('detail-view');
+    const searchView = document.getElementById('search-view');
+    const content = document.getElementById('detail-content');
+    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
 
-            searchView.style.display = 'none';
-            detailView.style.display = 'block';
+    searchView.style.display = 'none';
+    detailView.style.display = 'block';
 
-            content.innerHTML = `
-                <div class="champ-info-header">
-                    <img src="${imgUrl}" class="champ-icon-large" onerror="this.src='https://via.placeholder.com/100?text=No+Img'">
-                    <h2>Thông tin: ${champ.name}</h2>
-                </div>
-                <div class="grid-container">
-                    <div class="info-card">
-                        <h3>Lối lên đồ (Items)</h3>
-                        <ul>${champ.build.map(item => `<li>${item}</li>`).join('')}</ul>
-                    </div>
-                    <div class="info-card">
-                        <h3>Ngọc/Lõi hợp (Augments)</h3>
-                        <ul>${champ.augments.map(aug => `<li>${aug}</li>`).join('')}</ul>
-                    </div>
-                    <div class="info-card">
-                        <h3>Ngọc bổ trợ</h3>
-                        <ul>${champ.runes.map(rune => `<li>${rune}</li>`).join('')}</ul>
-                    </div>
-                </div>
-            `;
-        }
+    content.innerHTML = `
+        <div class="champ-info-header">
+            <img src="${imgUrl}" class="champ-icon-large" onerror="this.src='https://via.placeholder.com/100?text=No+Img'">
+            <h2>Thông tin: ${champ.name}</h2>
+        </div>
+        <div class="grid-container" style="grid-template-columns: 1fr 1fr;"> <div class="info-card">
+                <h3>Lối lên đồ (Items)</h3>
+                <ul>${champ.build.map(item => `<li>${item}</li>`).join('')}</ul>
+            </div>
+            <div class="info-card">
+                <h3>Ngọc/Lõi hợp (Augments)</h3>
+                <ul>${champ.augments.map(aug => `<li>${aug}</li>`).join('')}</ul>
+            </div>
+        </div>
+    `;
+}
 
         function goBack() {
             document.getElementById('detail-view').style.display = 'none';
