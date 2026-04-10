@@ -4,149 +4,96 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHUC88 - ARAM Mayhem Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-gold: #c89b3c;
-            --dark-blue: #091428;
-            --bg-overlay: rgba(0, 0, 0, 0.7);
+            --primary-gold: #c8aa6e;
+            --dark-bg: #0a0a0c;
+            --card-bg: #1e2328;
+            --border-color: #3c3c41;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-blue);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark-bg);
             color: white;
+            height: 100%;
             overflow-x: hidden;
         }
 
-        /* --- TRANG LOGIN --- */
+        /* --- MÀN HÌNH ĐĂNG NHẬP --- */
         #login-screen {
             position: fixed;
-            width: 100%;
-            height: 100%;
-            background: url('modekaiser.jpg') no-repeat center center fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Mordekaiser_13.jpg'); /* Mordekaiser Siêu Phẩm - "Tư Bản" */
             background-size: cover;
+            background-position: center;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 1000;
         }
 
         .login-box {
-            background: var(--bg-overlay);
-            padding: 40px;
+            background: rgba(30, 35, 40, 0.9);
+            padding: 30px;
             border: 2px solid var(--primary-gold);
+            border-radius: 10px;
             text-align: center;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(200, 170, 110, 0.4);
         }
 
-        .login-box h1 {
-            color: var(--primary-gold);
-            margin-bottom: 20px;
-            letter-spacing: 5px;
-        }
-
+        .login-box h1 { color: var(--primary-gold); margin-bottom: 20px; }
+        
         input[type="password"], input[type="text"] {
             padding: 12px;
             width: 250px;
             border: 1px solid var(--primary-gold);
-            background: rgba(0, 0, 0, 0.5);
+            background: #1a1c21;
             color: white;
-            margin-bottom: 15px;
+            border-radius: 5px;
             outline: none;
         }
 
-        button {
-            padding: 12px 30px;
+        .btn-gold {
             background: var(--primary-gold);
-            border: none;
             color: black;
+            border: none;
+            padding: 12px 25px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 15px;
             transition: 0.3s;
         }
 
-        button:hover {
-            background: #e1ad4a;
-            transform: scale(1.05);
-        }
+        .btn-gold:hover { background: #e1b34a; }
 
-        /* --- TRANG CHÍNH --- */
-        #main-content {
-            display: none;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /* --- MÀN HÌNH TRA CỨU --- */
+        #main-content { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
 
-        .header-main {
-            text-align: center;
-            border-bottom: 2px solid var(--primary-gold);
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
+        .header { text-align: center; border-bottom: 2px solid var(--primary-gold); padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { color: var(--primary-gold); letter-spacing: 5px; }
 
-        .search-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-
-        .champion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .champ-card {
-            background: #1e2328;
-            border: 1px solid #3c3c41;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .champ-card:hover {
-            border-color: var(--primary-gold);
-            background: #2a3038;
-        }
+        .search-container { text-align: center; margin-bottom: 40px; }
 
         /* --- CHI TIẾT TƯỚNG --- */
-        #detail-page {
-            display: none;
-            background: #010a13;
-            min-height: 100vh;
-            padding: 40px;
-        }
+        #detail-view { display: none; animation: fadeIn 0.5s; }
+        
+        .champ-info-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; background: var(--card-bg); padding: 20px; border-radius: 10px; border-left: 5px solid var(--primary-gold); }
+        .champ-icon-large { width: 100px; height: 100px; border: 2px solid var(--primary-gold); border-radius: 10px; }
 
-        .build-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 20px;
-        }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .info-card { background: var(--card-bg); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; }
+        .info-card h3 { color: var(--primary-gold); border-bottom: 1px solid #444; padding-bottom: 10px; }
+        .info-card ul { list-style: none; padding: 0; }
+        .info-card li { padding: 8px 0; border-bottom: 1px solid #2a2a2e; color: #ccc; }
 
-        .box {
-            flex: 1;
-            min-width: 300px;
-            background: #1e2328;
-            padding: 20px;
-            border-left: 4px solid var(--primary-gold);
-        }
-
-        .back-btn {
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        h2, h3 { color: var(--primary-gold); }
-        ul { list-style: none; padding: 0; }
-        li { padding: 8px 0; border-bottom: 1px solid #333; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .back-btn { cursor: pointer; color: var(--primary-gold); margin-bottom: 20px; display: inline-block; }
     </style>
 </head>
 <body>
@@ -154,114 +101,127 @@
     <div id="login-screen">
         <div class="login-box">
             <h1>PHUC88</h1>
-            <p>Vui lòng nhập mật khẩu để truy cập</p>
-            <input type="password" id="password" placeholder="Mật khẩu..." onkeypress="handleKeyPress(event)">
+            <p>Vui lòng nhập mã truy cập</p>
+            <input type="password" id="passwordInput" placeholder="Mật khẩu..." onkeydown="if(event.key==='Enter') checkPass()">
             <br>
-            <button onclick="checkPassword()">TRUY CẬP</button>
+            <button class="btn-gold" onclick="checkPass()">TRUY CẬP</button>
         </div>
     </div>
 
     <div id="main-content">
-        <div class="header-main">
+        <div class="header">
             <h1>PHUC88 - ARAM MAYHEM</h1>
         </div>
-        
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Nhập tên tướng (VD: Mordekaiser, Lee Sin...)" oninput="searchChampion()">
+
+        <div id="search-view">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Nhập tên tướng (ví dụ: Mordekaiser)..." oninput="liveSearch()">
+                <p style="color: #888; margin-top: 10px;">Nhập đúng tên tiếng Anh để lấy hình ảnh từ Riot API</p>
+            </div>
+            <div id="search-results" class="grid-container">
+                </div>
         </div>
 
-        <div class="champion-grid" id="championList">
-            </div>
-    </div>
-
-    <div id="detail-page">
-        <button class="back-btn" onclick="backToSearch()">← Quay lại</button>
-        <div id="championDetailContent">
-            </div>
+        <div id="detail-view">
+            <div class="back-btn" onclick="goBack()">← Quay lại tìm kiếm</div>
+            <div id="detail-content"></div>
+        </div>
     </div>
 
     <script>
-        // --- DỮ LIỆU TƯỚNG (Bạn có thể thêm tướng mới tại đây) ---
-        const championsData = [
-            {
+        // --- 1. DỮ LIỆU TƯỚNG (Bạn có thể thêm tướng mới tại đây) ---
+        const championData = {
+            "Mordekaiser": {
                 name: "Mordekaiser",
-                image: "mordekaiser.jpg",
-                items: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Giáp Gai", "Mặt Nạ Đọa Đày Liandry"],
-                augments: ["Siêu Công Nghệ", "Khổng Lồ Hóa", "Hỏa Khuẩn", "Vòng Tròn Tử Vong"]
+                build: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Giáp Gai", "Mặt Nạ Đọa Đày Liandry"],
+                augments: ["Siêu Công Nghệ", "Khổng Lồ Hóa", "Hỏa Khuẩn", "Vòng Tròn Tử Vong"],
+                runes: ["Chinh Phục", "Đắc Thắng", "Kháng Hiệu Ứng", "Chốt Chặn Cuối Cùng"]
             },
-            {
-                name: "Master Yi",
-                image: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Master Yi_0.jpg",
-                items: ["Vô Danh", "Cuồng Đao", "Đao Tím", "Vũ Điệu Tử Thần"],
-                augments: ["Nâng Cấp Vô Cực", "Vũ Công Thiết Hài", "Thân Thủ Lã Lướt"]
+            "Aali": {
+                name: "Akali",
+                build: ["Quyền Trượng Ác Thần", "Ngọn Ngọn Đuốc Icathia", "Mặt Nạ Đọa Đày"],
+                augments: ["Sát Thủ Săn Đuổi", "Kiếm Phép"],
+                runes: ["Sốc Điện", "Tác Động Bất Chợt"]
             }
-            // Thêm tướng mới vào đây theo cấu trúc trên
-        ];
+            // Thêm tướng khác theo cấu trúc này
+        };
 
-        // Kiểm tra mật khẩu
-        function checkPassword() {
-            const pass = document.getElementById('password').value;
+        // --- 2. LOGIC BẢO MẬT ---
+        function checkPass() {
+            const pass = document.getElementById('passwordInput').value;
             if (pass === "123456") {
                 document.getElementById('login-screen').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
-                renderChampions(championsData);
             } else {
                 alert("Sai mật khẩu rồi bạn ơi!");
             }
         }
 
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') checkPassword();
-        }
-
-        // Hiển thị danh sách tướng
-        function renderChampions(data) {
-            const list = document.getElementById('championList');
-            list.innerHTML = '';
-            data.forEach(champ => {
-                const div = document.createElement('div');
-                div.className = 'champ-card';
-                div.innerHTML = `<h3>${champ.name}</h3>`;
-                div.onclick = () => showDetail(champ);
-                list.appendChild(div);
-            });
-        }
-
-        // Tìm kiếm tướng
-        function searchChampion() {
+        // --- 3. LOGIC TÌM KIẾM ---
+        function liveSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = championsData.filter(c => c.name.toLowerCase().includes(query));
-            renderChampions(filtered);
+            const resultsContainer = document.getElementById('search-results');
+            resultsContainer.innerHTML = "";
+
+            if (query === "") return;
+
+            for (let key in championData) {
+                if (key.toLowerCase().includes(query)) {
+                    const champ = championData[key];
+                    // Link ảnh từ Riot API
+                    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
+                    
+                    const card = document.createElement('div');
+                    card.className = "info-card";
+                    card.style.cursor = "pointer";
+                    card.innerHTML = `
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <img src="${imgUrl}" style="width:50px; border-radius:5px; border:1px solid gold;">
+                            <strong style="color:var(--primary-gold)">${champ.name}</strong>
+                        </div>
+                    `;
+                    card.onclick = () => showDetail(key);
+                    resultsContainer.appendChild(card);
+                }
+            }
         }
 
-        // Xem chi tiết
-        function showDetail(champ) {
-            document.getElementById('main-content').style.display = 'none';
-            document.getElementById('detail-page').style.display = 'block';
-            
-            const detail = document.getElementById('championDetailContent');
-            detail.innerHTML = `
-                <h2>Thông tin: ${champ.name}</h2>
-                <div class="build-section">
-                    <div class="box">
+        // --- 4. HIỂN THỊ CHI TIẾT ---
+        function showDetail(key) {
+            const champ = championData[key];
+            const detailView = document.getElementById('detail-view');
+            const searchView = document.getElementById('search-view');
+            const content = document.getElementById('detail-content');
+            const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
+
+            searchView.style.display = 'none';
+            detailView.style.display = 'block';
+
+            content.innerHTML = `
+                <div class="champ-info-header">
+                    <img src="${imgUrl}" class="champ-icon-large" onerror="this.src='https://via.placeholder.com/100?text=No+Img'">
+                    <h2>Thông tin: ${champ.name}</h2>
+                </div>
+                <div class="grid-container">
+                    <div class="info-card">
                         <h3>Lối lên đồ (Items)</h3>
-                        <ul>${champ.items.map(i => `<li>${i}</li>`).join('')}</ul>
+                        <ul>${champ.build.map(item => `<li>${item}</li>`).join('')}</ul>
                     </div>
-                    <div class="box">
+                    <div class="info-card">
                         <h3>Ngọc/Lõi hợp (Augments)</h3>
-                        <ul>${champ.augments.map(a => `<li>${a}</li>`).join('')}</ul>
+                        <ul>${champ.augments.map(aug => `<li>${aug}</li>`).join('')}</ul>
                     </div>
-                    <div class="box">
+                    <div class="info-card">
                         <h3>Ngọc bổ trợ</h3>
-                        <ul>${champ.runes.map(r => `<li>${r}</li>`).join('')}</ul>
+                        <ul>${champ.runes.map(rune => `<li>${rune}</li>`).join('')}</ul>
                     </div>
                 </div>
             `;
         }
 
-        function backToSearch() {
-            document.getElementById('detail-page').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
+        function goBack() {
+            document.getElementById('detail-view').style.display = 'none';
+            document.getElementById('search-view').style.display = 'block';
         }
     </script>
 </body>
