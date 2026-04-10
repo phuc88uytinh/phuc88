@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHUC88 - ARAM Mayhem Tool</title>
+    <style>
+        :root {
+            --primary-gold: #c89b3c;
+            --dark-blue: #091428;
+            --bg-overlay: rgba(0, 0, 0, 0.7);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-blue);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- TRANG LOGIN --- */
+        #login-screen {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('mordekaiser.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .login-box {
+            background: var(--bg-overlay);
+            padding: 40px;
+            border: 2px solid var(--primary-gold);
+            text-align: center;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .login-box h1 {
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        input[type="password"], input[type="text"] {
+            padding: 12px;
+            width: 250px;
+            border: 1px solid var(--primary-gold);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 30px;
+            background: var(--primary-gold);
+            border: none;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e1ad4a;
+            transform: scale(1.05);
+        }
+
+        /* --- TRANG CHÍNH --- */
+        #main-content {
+            display: none;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-main {
+            text-align: center;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .champion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .champ-card {
+            background: #1e2328;
+            border: 1px solid #3c3c41;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .champ-card:hover {
+            border-color: var(--primary-gold);
+            background: #2a3038;
+        }
+
+        /* --- CHI TIẾT TƯỚNG --- */
+        #detail-page {
+            display: none;
+            background: #010a13;
+            min-height: 100vh;
+            padding: 40px;
+        }
+
+        .build-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 300px;
+            background: #1e2328;
+            padding: 20px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .back-btn {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        h2, h3 { color: var(--primary-gold); }
+        ul { list-style: none; padding: 0; }
+        li { padding: 8px 0; border-bottom: 1px solid #333; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h1>PHUC88</h1>
+            <p>Vui lòng nhập mật khẩu để truy cập</p>
+            <input type="password" id="password" placeholder="Mật khẩu..." onkeypress="handleKeyPress(event)">
+            <br>
+            <button onclick="checkPassword()">TRUY CẬP</button>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <div class="header-main">
+            <h1>PHUC88 - ARAM MAYHEM</h1>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Nhập tên tướng (VD: Mordekaiser, Lee Sin...)" oninput="searchChampion()">
+        </div>
+
+        <div class="champion-grid" id="championList">
+            </div>
+    </div>
+
+    <div id="detail-page">
+        <button class="back-btn" onclick="backToSearch()">← Quay lại</button>
+        <div id="championDetailContent">
+            </div>
+    </div>
+
+    <script>
+        // --- DỮ LIỆU TƯỚNG (Bạn có thể thêm tướng mới tại đây) ---
+        const championsData = [
+            {
+                name: "Mordekaiser",
+                image: "mordekaiser.jpg",
+                items: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Giáp Gai", "Mặt Nạ Đọa Đày Liandry"],
+                runes: ["Chinh Phục", "Đắc Thắng", "Kháng Hiệu Ứng", "Chốt Chặn Cuối Cùng"],
+                augments: ["Siêu Công Nghệ", "Khổng Lồ Hóa", "Hỏa Khuẩn", "Vòng Tròn Tử Vong"]
+            },
+            {
+                name: "Lee Sin",
+                image: "https://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_0.jpg",
+                items: ["Rìu Đen", "Búa Tiến Công", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần"],
+                runes: ["Chinh Phục", "Đắc Thắng", "Huyền Thoại: Tốc Độ Đánh"],
+                augments: ["Kiếm Phép", "Xung Kích Trình Diễn", "Lưỡi Dao Ám Sát"]
+            }
+            // Thêm tướng mới vào đây theo cấu trúc trên
+        ];
+
+        // Kiểm tra mật khẩu
+        function checkPassword() {
+            const pass = document.getElementById('password').value;
+            if (pass === "123456") {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+                renderChampions(championsData);
+            } else {
+                alert("Sai mật khẩu rồi bạn ơi!");
+            }
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') checkPassword();
+        }
+
+        // Hiển thị danh sách tướng
+        function renderChampions(data) {
+            const list = document.getElementById('championList');
+            list.innerHTML = '';
+            data.forEach(champ => {
+                const div = document.createElement('div');
+                div.className = 'champ-card';
+                div.innerHTML = `<h3>${champ.name}</h3>`;
+                div.onclick = () => showDetail(champ);
+                list.appendChild(div);
+            });
+        }
+
+        // Tìm kiếm tướng
+        function searchChampion() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = championsData.filter(c => c.name.toLowerCase().includes(query));
+            renderChampions(filtered);
+        }
+
+        // Xem chi tiết
+        function showDetail(champ) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('detail-page').style.display = 'block';
+            
+            const detail = document.getElementById('championDetailContent');
+            detail.innerHTML = `
+                <h2>Thông tin: ${champ.name}</h2>
+                <div class="build-section">
+                    <div class="box">
+                        <h3>Lối lên đồ (Items)</h3>
+                        <ul>${champ.items.map(i => `<li>${i}</li>`).join('')}</ul>
+                    </div>
+                    <div class="box">
+                        <h3>Ngọc/Lõi hợp (Augments)</h3>
+                        <ul>${champ.augments.map(a => `<li>${a}</li>`).join('')}</ul>
+                    </div>
+                    <div class="box">
+                        <h3>Ngọc bổ trợ</h3>
+                        <ul>${champ.runes.map(r => `<li>${r}</li>`).join('')}</ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        function backToSearch() {
+            document.getElementById('detail-page').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
