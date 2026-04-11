@@ -131,155 +131,848 @@
     <script>
        // --- 1. THƯ VIỆN TƯỚNG (Bạn thêm tướng mới vào đây) ---
 const championData = {
+    // --- 60 TƯỚNG ĐÃ SOẠN (CẬP NHẬT THÊM TRANG BỊ & LÕI CHUẨN BLITZ) ---
     "Mordekaiser": {
         name: "Mordekaiser",
-        build: ["Quyền Trượng Ác Thần", "Trượng Pha Lê Rylai", "Giáp Tâm Linh", "Mặt Nạ Liandry"],
-        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Siêu Công Nghệ", "Vòng Tròn Tử Vong"]
+        build: ["Quyền Trượng Ác Thần", "Trượng Pha Lê Rylai", "Giáp Tâm Linh", "Mặt Nạ Liandry", "Giáp Gai", "Động Cơ Vũ Trụ"],
+        augments: ["Khổng Lồ Hóa", "Động Cơ Đỡ Đòn", "NV:Trái Tim Sắt Đá", "Vòng Tròn Tử Thần", "Quỷ Nguyệt Vô Thường", "Euruka", "Tái Tạo Tuyệt Chiêu"]
     },
     "Malphite": {
         name: "Malphite",
-        build: ["Quyền Trượng Ác Thần", "Ngọn Đuốc Icathia", "Mũ Phù Thủy", "Đồng Hồ Cát"],
-        augments: ["Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"]
+        build: ["Quyền Trượng Ác Thần", "Ngọn Đuốc Icathia", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Kính Nhắm Bất Ngờ", "Trượng Hư Vô"],
+        augments: ["Chấn Động", "Găng Tay Bảo Thạch", "Khổng Lồ Hóa", "Động Cơ Đỡ Đòn", "NV:Trái Tim Sắt Đá", "Tái Tạo Tuyệt Chiêu", "NV:Nâng Cấp Giáp Gai"]
     },
     "Aatrox": {
         name: "Aatrox",
-        build: ["Nguyệt Thần", "Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần"],
-        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa"]
+        build: ["Nguyệt Thần", "Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Tâm Linh", "Rìu Mãng Xà"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa", "Cú Đấm Huyền Bí", "Lõi Công Nghệ", "Bản Giao Hưởng Chiến Tranh", "Phản Đòn"]
     },
     "Akali": {
         name: "Akali",
-        build: ["Quyền Trượng Ác Thần", "Cá Kiếm", "Mặt Nạ Đọa Đày", "Đồng Hồ Cát"],
-        augments: ["Sát Thủ Săn Đuổi", "Kiếm Phép", "Biến Ảo"]
+        build: ["Quyền Trượng Ác Thần", "Cá Kiếm", "Mặt Nạ Đọa Đày Liandry", "Đồng Hồ Cát Zhonya", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon"],
+        augments: ["Sát Thủ Săn Đuổi", "Kiếm Phép", "Biến Ảo", "Ác Quỷ Hiển Nhiên", "Lướt Phép", "Tốc Độ Kinh Hoàng", "Tên Lửa Phép Thuật"]
     },
     "Yasuo": {
         name: "Yasuo",
-        build: ["Nỏ Tử Thủ", "Vô Cực Kiếm", "Gươm Suy Vong", "Vũ Điệu Tử Thần"],
-        augments: ["Song Kiếm", "Lưỡi Dao Chết Chóc", "Cuồng Huyết"]
+        build: ["Nỏ Tử Thủ", "Vô Cực Kiếm", "Gươm Suy Vong", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak", "Giáp Thiên Thần"],
+        augments: ["Song Kiếm", "Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Tốc Độ Kinh Hoàng", "Chấn Động", "Kiếm Phép", "Lõi Công Nghệ"]
     },
     "Yone": {
         name: "Yone",
-        build: ["Gươm Suy Vong", "Vô Cực Kiếm", "Nỏ Tử Thủ", "Vũ Điệu Tử Thần"],
-        augments: ["Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Lưỡi Dao Chết Chóc"]
+        build: ["Gươm Suy Vong", "Vô Cực Kiếm", "Nỏ Tử Thủ", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak", "Đao Tím"],
+        augments: ["Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Chấn Động", "Song Kiếm", "Sát Thủ Săn Đuổi"]
     },
     "Lux": {
         name: "Lux",
-        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy", "Kính Nhắm Bất Ngờ"],
-        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật"]
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Kính Nhắm Bất Ngờ", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Tên Lửa Phép Thuật", "Ác Quỷ Hiển Nhiên", "Găng Tay Bảo Thạch", "Lướt Phép"]
     },
     "Sett": {
         name: "Sett",
-        build: ["Rìu Đại Mãng Xà", "Móng Vuốt Sterak", "Giáp Liệt Sĩ", "Giáp Gai"],
-        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng"]
+        build: ["Rìu Đại Mãng Xà", "Móng Vuốt Sterak", "Giáp Liệt Sĩ", "Giáp Gai", "Chùy Phản Kích", "Trái Tim Khổng Thần"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Cuồng Huyết", "Siêu Công Nghệ", "Chấn Động", "Vòng Tròn Tử Vong"]
     },
     "MasterYi": {
         name: "Master Yi",
-        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Đao Tím", "Giáp Thiên Thần"],
-        augments: ["Ảo Ảnh", "Song Kiếm", "Cuồng Huyết"]
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Đao Tím", "Giáp Thiên Thần", "Móng Vuốt Sterak", "Đao Nhường Bước"],
+        augments: ["Ảo Ảnh", "Song Kiếm", "Cuồng Huyết", "Tốc Độ Kinh Hoàng", "Lưỡi Dao Chết Chóc", "Cú Đấm Huyền Bí", "Biến Ảo"]
     },
     "LeeSin": {
         name: "Lee Sin",
-        build: ["Rìu Đen", "Nguyệt Thần", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak"],
-        augments: ["Kiếm Phép", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"]
+        build: ["Rìu Đen", "Nguyệt Thần", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak", "Chùy Phản Kích", "Rìu Mãng Xà"],
+        augments: ["Kiếm Phép", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Cuồng Huyết", "Chấn Động", "Biến Ảo", "Bản Giao Hưởng Chiến Tranh"]
     },
     "Vayne": {
         name: "Vayne",
-        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Đao Tím"],
-        augments: ["Song Kiếm", "Tốc Độ Kinh Hoàng", "Biến Ảo"]
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Đao Tím", "Giáp Thiên Thần", "Nỏ Thần Dominik"],
+        augments: ["Song Kiếm", "Tốc Độ Kinh Hoàng", "Biến Ảo", "Đạn Nổ", "Lưỡi Dao Chết Chóc", "Ảo Ảnh", "Tăng Tốc"]
     },
     "Jinx": {
         name: "Jinx",
-        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Cuồng Cung Runaan", "Nỏ Thần Dominik"],
-        augments: ["Đạn Nổ", "Tăng Tốc", "Song Kiếm"]
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Cuồng Cung Runaan", "Nỏ Thần Dominik", "Huyết Kiếm", "Đao Nhường Bước"],
+        augments: ["Đạn Nổ", "Tăng Tốc", "Song Kiếm", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Lưỡi Dao Chết Chóc", "Lõi Công Nghệ"]
     },
     "Veigar": {
         name: "Veigar",
-        build: ["Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy", "Đồng Hồ Cát", "Trượng Hư Vô"],
-        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật"]
+        build: ["Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Bão Tố Luden"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Găng Tay Bảo Thạch", "Tên Lửa Phép Thuật", "Ảo Tưởng Sức Mạnh"]
     },
     "Katarina": {
         name: "Katarina",
-        build: ["Nanh Nashor", "Quyền Trượng Ác Thần", "Mũ Phù Thủy", "Cá Kiếm"],
-        augments: ["Biến Ảo", "Ảo Ảnh", "Hỏa Khuẩn"]
+        build: ["Nanh Nashor", "Quyền Trượng Ác Thần", "Mũ Phù Thủy Rabadon", "Cá Kiếm", "Đồng Hồ Cát Zhonya", "Ngọn Lửa Hắc Ám"],
+        augments: ["Biến Ảo", "Ảo Ảnh", "Hỏa Khuẩn", "Sát Thủ Săn Đuổi", "Ác Quỷ Hiển Nhiên", "Tên Lửa Phép Thuật", "Bản Giao Hưởng Chiến Tranh"]
     },
     "Zed": {
         name: "Zed",
-        build: ["Kiếm Ma Youmuu", "Nguyên Tố Luân", "Áo Choàng Bóng Tối", "Rìu Đen"],
-        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Lõi Công Nghệ"]
+        build: ["Kiếm Ma Youmuu", "Nguyên Tố Luân", "Áo Choàng Bóng Tối", "Rìu Đen", "Thương Phục Hận Serylda", "Rìu Mãng Xà"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Lõi Công Nghệ", "Ảo Ảnh", "Chấn Động", "Lưỡi Dao Chết Chóc", "Cuồng Huyết"]
     },
     "Darius": {
         name: "Darius",
-        build: ["Chùy Phản Kích", "Rìu Đen", "Móng Vuốt Sterak", "Giáp Liệt Sĩ"],
-        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Phản Đòn"]
+        build: ["Chùy Phản Kích", "Rìu Đen", "Móng Vuốt Sterak", "Giáp Liệt Sĩ", "Giáp Gai", "Vũ Điệu Tử Thần"],
+        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Phản Đòn", "Thợ Săn Huyết Đao", "Chấn Động", "Lõi Công Nghệ", "Bản Giao Hưởng Chiến Tranh"]
     },
     "Garen": {
         name: "Garen",
-        build: ["Chùy Phản Kích", "Rìu Đen", "Giáp Liệt Sĩ", "Móng Vuốt Sterak"],
-        augments: ["Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật", "Phản Đòn"]
+        build: ["Chùy Phản Kích", "Rìu Đen", "Giáp Liệt Sĩ", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Gai"],
+        augments: ["Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật", "Phản Đòn", "Bánh Mì Và Bơ", "Cuồng Huyết", "Siêu Công Nghệ", "Chấn Động"]
     },
     "Ahri": {
         name: "Ahri",
-        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy", "Đồng Hồ Cát"],
-        augments: ["Biến Ảo", "Pháp Sư Đa Chú", "Hỏa Khuẩn"]
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Kính Nhắm Bất Ngờ"],
+        augments: ["Biến Ảo", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Gia Tốc Kỹ Thuật", "Tên Lửa Phép Thuật", "Ảo Ảnh"]
     },
     "Ezreal": {
         name: "Ezreal",
-        build: ["Tam Hợp Kiếm", "Thần Kiếm Muramana", "Thương Phục Hận", "Rìu Đen"],
-        augments: ["Kiếm Phép", "Lõi Công Nghệ", "Tốc Độ Kinh Hoàng"]
+        build: ["Tam Hợp Kiếm", "Thần Kiếm Muramana", "Thương Phục Hận Serylda", "Rìu Đen", "Huyết Kiếm", "Đao Tím"],
+        augments: ["Kiếm Phép", "Lõi Công Nghệ", "Tốc Độ Kinh Hoàng", "Gia Tốc Kỹ Thuật", "Biến Ảo", "Song Kiếm", "Bản Giao Hưởng Chiến Tranh"]
     },
     "Kaisa": {
         name: "Kai'Sa",
-        build: ["Móc Diệt Thủy Quái", "Cuồng Đao Guinsoo", "Nanh Nashor", "Đồng Hồ Cát"],
-        augments: ["Ảo Ảnh", "Song Kiếm", "Biến Ảo"]
+        build: ["Móc Diệt Thủy Quái", "Cuồng Đao Guinsoo", "Nanh Nashor", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Gươm Suy Vong"],
+        augments: ["Ảo Ảnh", "Song Kiếm", "Biến Ảo", "Ác Quỷ Hiển Nhiên", "Tốc Độ Kinh Hoàng", "Đạn Nổ", "Kiếm Phép"]
     },
     "Nautilus": {
         name: "Nautilus",
-        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương"],
-        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong"]
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Lời Thề Hiệp Sĩ", "Mặt Nạ Liandry"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Khiên Thần"]
     },
     "Pyke": {
         name: "Pyke",
-        build: ["Kiếm Ma Youmuu", "Áo Choàng Bóng Tối", "Thương Phục Hận", "Kiếm Âm U"],
-        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Tốc Độ Kinh Hoàng"]
+        build: ["Kiếm Ma Youmuu", "Áo Choàng Bóng Tối", "Thương Phục Hận Serylda", "Kiếm Âm U", "Móng Vuốt Ám Muội", "Rìu Đen"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Lõi Công Nghệ", "Chấn Động", "Cuồng Huyết"]
     },
     "Sylas": {
         name: "Sylas",
-        build: ["Quyền Trượng Ác Thần", "Đồng Hồ Cát", "Mũ Phù Thủy", "Trượng Hư Vô"],
-        augments: ["Kiếm Phép", "Cuồng Huyết", "Hỏa Khuẩn"]
+        build: ["Quyền Trượng Ác Thần", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Kiếm Tai Ương"],
+        augments: ["Kiếm Phép", "Cuồng Huyết", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Lướt Phép", "Khổng Lồ Hóa", "Thợ Săn Huyết Đao"]
     },
     "Thresh": {
         name: "Thresh",
-        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Lời Thề Hiệp Sĩ", "Tụ Bão Zeke"],
-        augments: ["Phản Đòn", "Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật"]
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Lời Thề Hiệp Sĩ", "Tụ Bão Zeke", "Giáp Tâm Linh", "Khiên Thái Dương"],
+        augments: ["Phản Đòn", "Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật", "Siêu Công Nghệ", "Vòng Tròn Tử Vong", "Chấn Động", "Khiên Thần"]
     },
     "Volibear": {
         name: "Volibear",
-        build: ["Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Nanh Nashor", "Giáp Gai"],
-        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Phản Đòn"]
+        build: ["Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Nanh Nashor", "Giáp Gai", "Rìu Đại Mãng Xà", "Trái Tim Khổng Thần"],
+        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Phản Đòn", "Cuồng Huyết", "Siêu Công Nghệ", "Cú Đấm Huyền Bí", "Kiếm Phép"]
     },
     "Jax": {
         name: "Jax",
-        build: ["Tam Hợp Kiếm", "Gươm Suy Vong", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak"],
-        augments: ["Kiếm Phép", "Cuồng Huyết", "Song Kiếm"]
+        build: ["Tam Hợp Kiếm", "Gươm Suy Vong", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak", "Giáp Tâm Linh", "Rìu Đen"],
+        augments: ["Kiếm Phép", "Cuồng Huyết", "Song Kiếm", "Thợ Săn Huyết Đao", "Cú Đấm Huyền Bí", "Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng"]
     },
     "Samira": {
         name: "Samira",
-        build: ["Nỏ Tử Thủ", "Súng Hải Tặc", "Vô Cực Kiếm", "Vũ Điệu Tử Thần"],
-        augments: ["Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Biến Ảo"]
+        build: ["Nỏ Tử Thủ", "Súng Hải Tặc", "Vô Cực Kiếm", "Vũ Điệu Tử Thần", "Huyết Kiếm", "Nỏ Thần Dominik"],
+        augments: ["Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Biến Ảo", "Thợ Săn Huyết Đao", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Bản Giao Hưởng Chiến Tranh"]
     },
     "Vi": {
         name: "Vi",
-        build: ["Rìu Đen", "Chùy Phản Kích", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần"],
-        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng"]
+        build: ["Rìu Đen", "Chùy Phản Kích", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Gai", "Giáp Tâm Linh"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Cú Đấm Huyền Bí", "Chấn Động", "Lõi Công Nghệ", "Siêu Công Nghệ"]
     },
     "Caitlyn": {
         name: "Caitlyn",
-        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Đại Bác Liên Thanh", "Nỏ Thần Dominik"],
-        augments: ["Đạn Nổ", "Tốc Độ Kinh Hoàng", "Song Kiếm"]
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Đại Bác Liên Thanh", "Nỏ Thần Dominik", "Súng Hải Tặc", "Huyết Kiếm"],
+        augments: ["Đạn Nổ", "Tốc Độ Kinh Hoàng", "Song Kiếm", "Lưỡi Dao Chết Chóc", "Ảo Ảnh", "Tăng Tốc", "Lõi Công Nghệ"]
     },
     "Brand": {
         name: "Brand",
-        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy"],
-        augments: ["Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật"]
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya"],
+        augments: ["Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Tên Lửa Phép Thuật", "Găng Tay Bảo Thạch", "Lướt Phép"]
+    },
+    "Leblanc": {
+        name: "LeBlanc",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Tên Lửa Phép Thuật", "Biến Ảo", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Ảo Ảnh", "Lướt Phép"]
+    },
+    "Warwick": {
+        name: "Warwick",
+        build: ["Gươm Suy Vong", "Rìu Mãng Xà", "Giáp Tâm Linh", "Khiên Thái Dương", "Giáp Gai", "Móng Vuốt Sterak"],
+        augments: ["Cuồng Huyết", "Khổng Lồ Hóa", "Thợ Săn Huyết Đao", "Phản Đòn", "Cú Đấm Huyền Bí", "Tốc Độ Kinh Hoàng", "Siêu Công Nghệ"]
+    },
+    "Syndra": {
+        name: "Syndra",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Bão Tố Luden"],
+        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Găng Tay Bảo Thạch", "Tên Lửa Phép Thuật", "Ảo Tưởng Sức Mạnh"]
+    },
+    "Karma": {
+        name: "Karma",
+        build: ["Bình Thải Học Thuật", "Vương Miện Suy Vong", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Trấn Hồn Linh", "Bất Hủ Ngôn Từ"],
+        augments: ["Gia Tốc Kỹ Thuật", "Vòng Tròn Tử Vong", "Hỏa Khuẩn", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Khiên Thần", "Găng Tay Bảo Thạch"]
+    },
+    "Malzahar": {
+        name: "Malzahar",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Trượng Hư Vô", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Tên Lửa Phép Thuật", "Siêu Công Nghệ", "Vòng Tròn Tử Vong"]
+    },
+    "Hecarim": {
+        name: "Hecarim",
+        build: ["Tam Hợp Kiếm", "Ngọn Giáo Shojin", "Vũ Điệu Tử Thần", "Giáp Liệt Sĩ", "Rìu Đen", "Móng Vuốt Sterak"],
+        augments: ["Tốc Độ Kinh Hoàng", "Khổng Lồ Hóa", "Cuồng Huyết", "Chấn Động", "Lõi Công Nghệ", "Bản Giao Hưởng Chiến Tranh", "Phản Đòn"]
+    },
+    "Twitch": {
+        name: "Twitch",
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Đao Tím", "Vô Cực Kiếm", "Cuồng Cung Runaan"],
+        augments: ["Đạn Nổ", "Song Kiếm", "Sát Thủ Săn Đuổi", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Lưỡi Dao Chết Chóc", "Biến Ảo"]
+    },
+    "Swain": {
+        name: "Swain",
+        build: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Mặt Nạ Liandry", "Giáp Tâm Linh", "Trái Tim Khổng Thần", "Giáp Gai"],
+        augments: ["Khổng Lồ Hóa", "Vòng Tròn Tử Vong", "Hỏa Khuẩn", "Siêu Công Nghệ", "Phản Đòn", "Ác Quỷ Hiển Nhiên", "Khiên Thần"]
+    },
+    "Riven": {
+        name: "Riven",
+        build: ["Rìu Đen", "Rìu Mãng Xà", "Vũ Điệu Tử Thần", "Nguyệt Thần", "Móng Vuốt Sterak", "Ngọn Giáo Shojin"],
+        augments: ["Cuồng Huyết", "Gia Tốc Kỹ Thuật", "Lõi Công Nghệ", "Cú Đấm Huyền Bí", "Chấn Động", "Kiếm Phép", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Olaf": {
+        name: "Olaf",
+        build: ["Rìu Đen", "Gươm Suy Vong", "Móng Vuốt Sterak", "Giáp Tâm Linh", "Vũ Điệu Tử Thần", "Chùy Phản Kích"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Graves": {
+        name: "Graves",
+        build: ["Nỏ Tử Thủ", "Rìu Đen", "Huyết Kiếm", "Vô Cực Kiếm", "Vũ Điệu Tử Thần", "Súng Hải Tặc"],
+        augments: ["Lưỡi Dao Chết Chóc", "Đạn Nổ", "Cuồng Huyết", "Thợ Săn Huyết Đao", "Tốc Độ Kinh Hoàng", "Chấn Động", "Lõi Công Nghệ"]
+    },
+    "Diana": {
+        name: "Diana",
+        build: ["Nanh Nashor", "Quyền Trượng Ác Thần", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Ngọn Lửa Hắc Ám", "Trượng Pha Lê Rylai"],
+        augments: ["Kiếm Phép", "Ảo Ảnh", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Lướt Phép", "Tên Lửa Phép Thuật", "Hỏa Khuẩn"]
+    },
+    "Fizz": {
+        name: "Fizz",
+        build: ["Kiếm Tai Ương", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Bão Tố Luden", "Cá Kiếm"],
+        augments: ["Biến Ảo", "Sát Thủ Săn Đuổi", "Kiếm Phép", "Tên Lửa Phép Thuật", "Ảo Ảnh", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên"]
+    },
+    "Gragas": {
+        name: "Gragas",
+        build: ["Quyền Trượng Ác Thần", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Giáp Tâm Linh", "Trái Tim Khổng Thần"],
+        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Bánh Mì Và Bơ", "Phản Đòn", "Chấn Động", "Ác Quỷ Hiển Nhiên"]
+    },
+    "Camille": {
+        name: "Camille",
+        build: ["Tam Hợp Kiếm", "Rìu Mãng Xà", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Rìu Đen", "Giáp Tâm Linh"],
+        augments: ["Kiếm Phép", "Cuồng Huyết", "Lõi Công Nghệ", "Thợ Săn Huyết Đao", "Chấn Động", "Cú Đấm Huyền Bí", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Khazix": {
+        name: "Kha'Zix",
+        build: ["Kiếm Ma Youmuu", "Rìu Đen", "Áo Choàng Bóng Tối", "Nguyên Tố Luân", "Thương Phục Hận Serylda", "Huyết Kiếm"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Ảo Ảnh", "Lõi Công Nghệ", "Lưỡi Dao Chết Chóc", "Chấn Động", "Cuồng Huyết"]
+    },
+    "Rengar": {
+        name: "Rengar",
+        build: ["Lưỡi Hái Linh Hồn", "Vô Cực Kiếm", "Súng Hải Tặc", "Nỏ Tử Thủ", "Rìu Đen", "Huyết Kiếm"],
+        augments: ["Sát Thủ Săn Đuổi", "Cuồng Huyết", "Ảo Ảnh", "Lưỡi Dao Chết Chóc", "Biến Ảo", "Thợ Săn Huyết Đao", "Chấn Động"]
+    },
+    "Talon": {
+        name: "Talon",
+        build: ["Móng Vuốt Ám Muội", "Rìu Đen", "Kiếm Ma Youmuu", "Thương Phục Hận Serylda", "Áo Choàng Bóng Tối", "Rìu Mãng Xà"],
+        augments: ["Biến Ảo", "Sát Thủ Săn Đuổi", "Lõi Công Nghệ", "Ảo Ảnh", "Chấn Động", "Lưỡi Dao Chết Chóc", "Tốc Độ Kinh Hoàng"]
+    },
+    "Xerath": {
+        name: "Xerath",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Kính Nhắm Bất Ngờ", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Tên Lửa Phép Thuật", "Găng Tay Bảo Thạch", "Ảo Tưởng Sức Mạnh"]
+    },
+    "Ziggs": {
+        name: "Ziggs",
+        build: ["Mặt Nạ Liandry", "Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô", "Trượng Pha Lê Rylai"],
+        augments: ["Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Tên Lửa Phép Thuật", "Găng Tay Bảo Thạch", "Bánh Mì Và Bơ"]
+    },
+    "Amumu": {
+        name: "Amumu",
+        build: ["Trái Tim Khổng Thần", "Khiên Thái Dương", "Giáp Gai", "Mặt Nạ Liandry", "Giáp Tâm Linh", "Trượng Pha Lê Rylai"],
+        augments: ["Khổng Lồ Hóa", "Vòng Tròn Tử Vong", "Phản Đòn", "Siêu Công Nghệ", "Chấn Động", "Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn"]
+    },
+    "Alistar": {
+        name: "Alistar",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Lời Thề Hiệp Sĩ", "Khiên Thái Dương", "Dây Chuyền Iron Solari"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Vòng Tròn Tử Vong", "Khiên Thần"]
+    },
+    "Braum": {
+        name: "Braum",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Dây Chuyền Iron Solari", "Lời Thề Hiệp Sĩ", "Giáp Tâm Linh", "Khiên Thái Dương"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Khiên Thần", "Vòng Tròn Tử Vong", "Bản Giao Hưởng Chiến Tranh", "Chấn Động"]
+    },
+    "Galio": {
+        name: "Galio",
+        build: ["Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Giáp Tâm Linh", "Mũ Phù Thủy Rabadon", "Trái Tim Khổng Thần", "Đồng Hồ Cát Zhonya"],
+        augments: ["Khổng Lồ Hóa", "Vòng Tròn Tử Vong", "Hỏa Khuẩn", "Phản Đòn", "Ác Quỷ Hiển Nhiên", "Siêu Công Nghệ", "Khiên Thần"]
+    },
+    "Kayn": {
+        name: "Kayn",
+        build: ["Rìu Đen", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak", "Nguyệt Thần", "Rìu Mãng Xà", "Thương Phục Hận Serylda"],
+        augments: ["Cuồng Huyết", "Ảo Ảnh", "Sát Thủ Săn Đuổi", "Biến Ảo", "Khổng Lồ Hóa", "Thợ Săn Huyết Đao", "Lõi Công Nghệ"]
+    },
+    "Lillia": {
+        name: "Lillia",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Đồng Hồ Cát Zhonya", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon"],
+        augments: ["Hỏa Khuẩn", "Tốc Độ Kinh Hoàng", "Gia Tốc Kỹ Thuật", "Lướt Phép", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Găng Tay Bảo Thạch"]
+    },
+    "Nunu": {
+        name: "Nunu",
+        build: ["Trái Tim Khổng Thần", "Khiên Thái Dương", "Giáp Gai", "Trượng Pha Lê Rylai", "Giáp Tâm Linh", "Mũ Phù Thủy Rabadon"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong", "Chấn Động", "Hỏa Khuẩn", "Siêu Công Nghệ", "Khiên Thần"]
+    },
+    "Shaco": {
+        name: "Shaco",
+        build: ["Mặt Nạ Liandry", "Kiếm Tai Ương", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Ảo Ảnh", "Biến Ảo", "Hỏa Khuẩn", "Sát Thủ Săn Đuổi", "Tên Lửa Phép Thuật", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú"]
+    },
+    "Teemo": {
+        name: "Teemo",
+        build: ["Mặt Nạ Liandry", "Nanh Nashor", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya"],
+        augments: ["Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Ảo Ảnh", "Tên Lửa Phép Thuật", "Ảo Tưởng Sức Mạnh"]
+    },
+    "Urgot": {
+        name: "Urgot",
+        build: ["Rìu Đen", "Rìu Đại Mãng Xà", "Móng Vuốt Sterak", "Giáp Gai", "Giáp Tâm Linh", "Chùy Phản Kích"],
+        augments: ["Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Phản Đòn", "Siêu Công Nghệ", "Cuồng Huyết", "Cú Đấm Huyền Bí", "Khiên Thần"]
+    },
+
+    // --- 40 TƯỚNG MỚI (PHÂN TÍCH TỪ BLITZ.GG) ---
+    "Renekton": {
+        name: "Renekton",
+        build: ["Chùy Phản Kích", "Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Tâm Linh", "Rìu Mãng Xà"],
+        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Thợ Săn Huyết Đao", "Phản Đòn", "Chấn Động", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Irelia": {
+        name: "Irelia",
+        build: ["Gươm Suy Vong", "Tam Hợp Kiếm", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Đao Tím", "Rìu Đen"],
+        augments: ["Kiếm Phép", "Song Kiếm", "Cuồng Huyết", "Tốc Độ Kinh Hoàng", "Cú Đấm Huyền Bí", "Chấn Động", "Lõi Công Nghệ"]
+    },
+    "Belveth": {
+        name: "Bel'Veth",
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Đao Tím", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak"],
+        augments: ["Song Kiếm", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Biến Ảo", "Lõi Công Nghệ"]
+    },
+    "Briar": {
+        name: "Briar",
+        build: ["Nguyệt Thần", "Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Rìu Mãng Xà", "Giáp Tâm Linh"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Phản Đòn", "Lõi Công Nghệ", "Chấn Động"]
+    },
+    "Naafiri": {
+        name: "Naafiri",
+        build: ["Nguyệt Thần", "Rìu Đen", "Áo Choàng Bóng Tối", "Thương Phục Hận Serylda", "Nguyên Tố Luân", "Rìu Mãng Xà"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Cuồng Huyết", "Lõi Công Nghệ", "Chấn Động", "Lưỡi Dao Chết Chóc", "Ảo Ảnh"]
+    },
+    "Pantheon": {
+        name: "Pantheon",
+        build: ["Nguyệt Thần", "Rìu Đen", "Thương Phục Hận Serylda", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Ngọn Giáo Shojin"],
+        augments: ["Kiếm Phép", "Cuồng Huyết", "Bản Giao Hưởng Chiến Tranh", "Chấn Động", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Shen": {
+        name: "Shen",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Rìu Đại Mãng Xà", "Lời Thề Hiệp Sĩ"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Khiên Thần", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Chấn Động", "Kiếm Phép"]
+    },
+    "Ornn": {
+        name: "Ornn",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Mặt Nạ Vực Thẳm", "Lời Thề Hiệp Sĩ"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Vòng Tròn Tử Vong", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Khiên Thần"]
+    },
+    "Sion": {
+        name: "Sion",
+        build: ["Trái Tim Khổng Thần", "Khiên Thái Dương", "Giáp Gai", "Rìu Đại Mãng Xà", "Giáp Tâm Linh", "Móng Vuốt Sterak"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Vòng Tròn Tử Vong", "Chấn Động", "Lõi Công Nghệ", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Chogath": {
+        name: "Cho'Gath",
+        build: ["Trái Tim Khổng Thần", "Khiên Thái Dương", "Giáp Gai", "Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Giáp Tâm Linh"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Chấn Động"]
+    },
+    "Mundo": {
+        name: "Dr. Mundo",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Móng Vuốt Sterak", "Rìu Đại Mãng Xà"],
+        augments: ["Khổng Lồ Hóa", "Vòng Tròn Tử Vong", "Phản Đòn", "Siêu Công Nghệ", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Khiên Thần"]
+    },
+    "Zac": {
+        name: "Zac",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Mặt Nạ Liandry", "Trượng Pha Lê Rylai"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Chấn Động"]
+    },
+    "Singed": {
+        name: "Singed",
+        build: ["Trượng Pha Lê Rylai", "Mặt Nạ Liandry", "Quyền Trượng Ác Thần", "Giáp Gai", "Giáp Tâm Linh", "Đồng Hồ Cát Zhonya"],
+        augments: ["Hỏa Khuẩn", "Tốc Độ Kinh Hoàng", "Khổng Lồ Hóa", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Gia Tốc Kỹ Thuật", "Khiên Thần"]
+    },
+    "Poppy": {
+        name: "Poppy",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Rìu Đen", "Móng Vuốt Sterak"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Khiên Thần", "Siêu Công Nghệ", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Vòng Tròn Tử Vong"]
+    },
+    "Rumble": {
+        name: "Rumble",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô"],
+        augments: ["Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Siêu Công Nghệ", "Gia Tốc Kỹ Thuật", "Khổng Lồ Hóa", "Tên Lửa Phép Thuật"]
+    },
+    "Kennen": {
+        name: "Kennen",
+        build: ["Đai Tên Lửa Hextech", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô", "Trượng Pha Lê Rylai"],
+        augments: ["Găng Tay Bảo Thạch", "Biến Ảo", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Lướt Phép", "Tên Lửa Phép Thuật", "Hỏa Khuẩn"]
+    },
+    "Vladimir": {
+        name: "Vladimir",
+        build: ["Quyền Trượng Ác Thần", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Động Cơ Vũ Trụ"],
+        augments: ["Vòng Tròn Tử Vong", "Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Khổng Lồ Hóa", "Siêu Công Nghệ"]
+    },
+    "Lissandra": {
+        name: "Lissandra",
+        build: ["Bão Tố Luden", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô", "Kính Nhắm Bất Ngờ"],
+        augments: ["Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Biến Ảo", "Tên Lửa Phép Thuật", "Gia Tốc Kỹ Thuật", "Găng Tay Bảo Thạch", "Ảo Ảnh"]
+    },
+    "Kassadin": {
+        name: "Kassadin",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Kiếm Tai Ương", "Ngọn Lửa Hắc Ám"],
+        augments: ["Biến Ảo", "Ảo Ảnh", "Kiếm Phép", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Lướt Phép", "Tên Lửa Phép Thuật"]
+    },
+    "Viktor": {
+        name: "Viktor",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Hỏa Khuẩn", "Tên Lửa Phép Thuật", "Găng Tay Bảo Thạch", "Bánh Mì Và Bơ"]
+    },
+    "Azir": {
+        name: "Azir",
+        build: ["Nanh Nashor", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Mặt Nạ Liandry"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Găng Tay Bảo Thạch", "Gia Tốc Kỹ Thuật", "Tốc Độ Kinh Hoàng", "Lướt Phép", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "AurelionSol": {
+        name: "Aurelion Sol",
+        build: ["Trượng Trường Sinh", "Quyền Trượng Đại Thiên Sứ", "Trượng Pha Lê Rylai", "Mặt Nạ Liandry", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Khổng Lồ Hóa", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Khiên Thần", "Siêu Công Nghệ"]
+    },
+    "Hwei": {
+        name: "Hwei",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ", "Kính Nhắm Bất Ngờ"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Tên Lửa Phép Thuật", "Găng Tay Bảo Thạch", "Ảo Tưởng Sức Mạnh"]
+    },
+    "Seraphine": {
+        name: "Seraphine",
+        build: ["Trấn Hồn Linh", "Vương Miện Suy Vong", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Bình Thải Học Thuật", "Bất Hủ Ngôn Từ"],
+        augments: ["Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Khiên Thần", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Găng Tay Bảo Thạch"]
+    },
+    "Morgana": {
+        name: "Morgana",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Hỏa Khuẩn", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Gia Tốc Kỹ Thuật", "Biến Ảo", "Vòng Tròn Tử Vong", "Khiên Thần"]
+    },
+    "Zyra": {
+        name: "Zyra",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya"],
+        augments: ["Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Tên Lửa Phép Thuật", "Siêu Công Nghệ", "Găng Tay Bảo Thạch"]
+    },
+    "MissFortune": {
+        name: "Miss Fortune",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Súng Hải Tặc", "Nỏ Thần Dominik", "Huyết Kiếm", "Cuồng Cung Runaan"],
+        augments: ["Đạn Nổ", "Tốc Độ Kinh Hoàng", "Song Kiếm", "Lưỡi Dao Chết Chóc", "Ảo Ảnh", "Biến Ảo", "Lõi Công Nghệ"]
+    },
+    "Lucian": {
+        name: "Lucian",
+        build: ["Móc Diệt Thủy Quái", "Nanh Nashor", "Vô Cực Kiếm", "Nỏ Thần Dominik", "Huyết Kiếm", "Lưỡi Hái Linh Hồn"],
+        augments: ["Song Kiếm", "Tốc Độ Kinh Hoàng", "Biến Ảo", "Đạn Nổ", "Ảo Ảnh", "Kiếm Phép", "Lõi Công Nghệ"]
+    },
+    "Draven": {
+        name: "Draven",
+        build: ["Huyết Kiếm", "Vô Cực Kiếm", "Súng Hải Tặc", "Nỏ Thần Dominik", "Nỏ Tử Thủ", "Đại Bác Liên Thanh"],
+        augments: ["Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Tốc Độ Kinh Hoàng", "Song Kiếm", "Ảo Ảnh", "Sát Thủ Săn Đuổi", "Lõi Công Nghệ"]
+    },
+    "Ashe": {
+        name: "Ashe",
+        build: ["Móc Diệt Thủy Quái", "Cuồng Đao Guinsoo", "Gươm Suy Vong", "Đao Tím", "Cuồng Cung Runaan", "Nỏ Thần Dominik"],
+        augments: ["Song Kiếm", "Đạn Nổ", "Tốc Độ Kinh Hoàng", "Tăng Tốc", "Ảo Ảnh", "Hỏa Khuẩn", "Lõi Công Nghệ"]
+    },
+    "Varus": {
+        name: "Varus",
+        build: ["Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Đao Tím", "Gươm Suy Vong", "Nanh Nashor", "Mũ Phù Thủy Rabadon"],
+        augments: ["Song Kiếm", "Đạn Nổ", "Tốc Độ Kinh Hoàng", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Ảo Ảnh", "Lõi Công Nghệ"]
+    },
+    "Senna": {
+        name: "Senna",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Đại Bác Liên Thanh", "Nỏ Thần Dominik", "Rìu Đen", "Huyết Kiếm"],
+        augments: ["Song Kiếm", "Lưỡi Dao Chết Chóc", "Tốc Độ Kinh Hoàng", "Đạn Nổ", "Ảo Ảnh", "Tăng Tốc", "Khiên Thần"]
+    },
+    "Tristana": {
+        name: "Tristana",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Nỏ Thần Dominik", "Huyết Kiếm", "Súng Hải Tặc", "Đại Bác Liên Thanh"],
+        augments: ["Đạn Nổ", "Tăng Tốc", "Tốc Độ Kinh Hoàng", "Song Kiếm", "Ảo Ảnh", "Biến Ảo", "Lõi Công Nghệ"]
+    },
+    "KogMaw": {
+        name: "Kog'Maw",
+        build: ["Cuồng Đao Guinsoo", "Gươm Suy Vong", "Móc Diệt Thủy Quái", "Đao Tím", "Cuồng Cung Runaan", "Rìu Đại Mãng Xà"],
+        augments: ["Song Kiếm", "Đạn Nổ", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Lõi Công Nghệ"]
+    },
+    "Zeri": {
+        name: "Zeri",
+        build: ["Móc Diệt Thủy Quái", "Cuồng Đao Guinsoo", "Gươm Suy Vong", "Nỏ Thần Dominik", "Rìu Đen", "Huyết Kiếm"],
+        augments: ["Tăng Tốc", "Song Kiếm", "Tốc Độ Kinh Hoàng", "Đạn Nổ", "Ảo Ảnh", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Xayah": {
+        name: "Xayah",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Nỏ Thần Dominik", "Huyết Kiếm", "Đại Bác Liên Thanh", "Đao Nhường Bước"],
+        augments: ["Đạn Nổ", "Song Kiếm", "Ảo Ảnh", "Tốc Độ Kinh Hoàng", "Lưỡi Dao Chết Chóc", "Biến Ảo", "Tăng Tốc"]
+    },
+    "Smolder": {
+        name: "Smolder",
+        build: ["Lưỡi Hái Linh Hồn", "Nanh Nashor", "Ngọn Giáo Shojin", "Mũ Phù Thủy Rabadon", "Nỏ Thần Dominik", "Huyết Kiếm"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Song Kiếm", "Tên Lửa Phép Thuật", "Găng Tay Bảo Thạch", "Lõi Công Nghệ"]
+    },
+    "Akshan": {
+        name: "Akshan",
+        build: ["Móc Diệt Thủy Quái", "Súng Hải Tặc", "Vô Cực Kiếm", "Gươm Suy Vong", "Nỏ Thần Dominik", "Huyết Kiếm"],
+        augments: ["Đạn Nổ", "Song Kiếm", "Tốc Độ Kinh Hoàng", "Sát Thủ Săn Đuổi", "Ảo Ảnh", "Biến Ảo", "Lõi Công Nghệ"]
+    },
+    "Anivia": {
+        name: "Anivia",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Trượng Pha Lê Rylai", "Mặt Nạ Liandry", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Khiên Thần"]
+    },
+    "Annie": {
+        name: "Annie",
+        build: ["Bão Tố Luden", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Kính Nhắm Bất Ngờ"],
+        augments: ["Găng Tay Bảo Thạch", "Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Tên Lửa Phép Thuật", "Pháp Sư Đa Chú", "Ảo Ảnh", "Biến Ảo"]
+    },
+    "Aphelios": {
+        name: "Aphelios",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Súng Hải Tặc", "Huyết Kiếm", "Nỏ Thần Dominik", "Cuồng Cung Runaan"],
+        augments: ["Đạn Nổ", "Song Kiếm", "Tốc Độ Kinh Hoàng", "Lưỡi Dao Chết Chóc", "Ảo Ảnh", "Tăng Tốc", "Lõi Công Nghệ"]
+    },
+    "Aurora": {
+        name: "Aurora",
+        build: ["Quyền Trượng Ác Thần", "Trượng Pha Lê Rylai", "Mặt Nạ Liandry", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Biến Ảo", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Tốc Độ Kinh Hoàng", "Lướt Phép"]
+    },
+    "Bard": {
+        name: "Bard",
+        build: ["Trấn Hồn Linh", "Vương Miện Suy Vong", "Trượng Pha Lê Rylai", "Quyền Trượng Ác Thần", "Dây Chuyền Iron Solari", "Mũ Phù Thủy Rabadon"],
+        augments: ["Vòng Tròn Tử Vong", "Tốc Độ Kinh Hoàng", "Khiên Thần", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Siêu Công Nghệ", "Lướt Phép"]
+    },
+    "Blitzcrank": {
+        name: "Blitzcrank",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Khiên Thái Dương", "Giáp Tâm Linh", "Mũ Phù Thủy Rabadon", "Lời Thề Hiệp Sĩ"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Vòng Tròn Tử Vong", "Chấn Động", "Gia Tốc Kỹ Thuật", "Khiên Thần"]
+    },
+    "Cassiopeia": {
+        name: "Cassiopeia",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Trượng Pha Lê Rylai", "Mặt Nạ Liandry", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Động Cơ Vũ Trụ"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Bánh Mì Và Bơ"]
+    },
+    "Corki": {
+        name: "Corki",
+        build: ["Tam Hợp Kiếm", "Thần Kiếm Muramana", "Súng Hải Tặc", "Vô Cực Kiếm", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô"],
+        augments: ["Kiếm Phép", "Găng Tay Bảo Thạch", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Song Kiếm", "Lõi Công Nghệ", "Tốc Độ Kinh Hoàng"]
+    },
+    "Ekko": {
+        name: "Ekko",
+        build: ["Kiếm Tai Ương", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Quyền Trượng Ác Thần"],
+        augments: ["Biến Ảo", "Kiếm Phép", "Sát Thủ Săn Đuổi", "Ảo Ảnh", "Ác Quỷ Hiển Nhiên", "Tốc Độ Kinh Hoàng", "Tên Lửa Phép Thuật"]
+    },
+    "Elise": {
+        name: "Elise",
+        build: ["Quyền Trượng Ác Thần", "Nanh Nashor", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám"],
+        augments: ["Biến Ảo", "Sát Thủ Săn Đuổi", "Kiếm Phép", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Ảo Ảnh", "Tốc Độ Kinh Hoàng"]
+    },
+    "Fiddlesticks": {
+        name: "Fiddlesticks",
+        build: ["Mặt Nạ Liandry", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Quyền Trượng Ác Thần"],
+        augments: ["Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Ảo Ảnh", "Găng Tay Bảo Thạch", "Siêu Công Nghệ"]
+    },
+    "Fiora": {
+        name: "Fiora",
+        build: ["Rìu Mãng Xà", "Tam Hợp Kiếm", "Vũ Điệu Tử Thần", "Rìu Đen", "Móng Vuốt Sterak", "Giáp Tâm Linh"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Kiếm Phép", "Cú Đấm Huyền Bí", "Lõi Công Nghệ", "Tốc Độ Kinh Hoàng", "Chấn Động"]
+    },
+    "Gangplank": {
+        name: "Gangplank",
+        build: ["Lưỡi Hái Linh Hồn", "Vô Cực Kiếm", "Súng Hải Tặc", "Nỏ Thần Dominik", "Móng Vuốt Ám Muội", "Huyết Kiếm"],
+        augments: ["Găng Tay Bảo Thạch", "Kiếm Phép", "Lưỡi Dao Chết Chóc", "Ảo Ảnh", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Gnar": {
+        name: "Gnar",
+        build: ["Tam Hợp Kiếm", "Rìu Đen", "Móng Vuốt Sterak", "Trái Tim Khổng Thần", "Giáp Liệt Sĩ", "Vũ Điệu Tử Thần"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Cuồng Huyết", "Chấn Động", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Gwen": {
+        name: "Gwen",
+        build: ["Nanh Nashor", "Quyền Trượng Ác Thần", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Giáp Tâm Linh", "Trượng Hư Vô"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Kiếm Phép", "Ác Quỷ Hiển Nhiên", "Cú Đấm Huyền Bí", "Hỏa Khuẩn", "Ảo Ảnh"]
+    },
+    "Heimerdinger": {
+        name: "Heimerdinger",
+        build: ["Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Siêu Công Nghệ", "Khiên Thần", "Bánh Mì Và Bơ"]
+    },
+    "Illaoi": {
+        name: "Illaoi",
+        build: ["Rìu Đen", "Móng Vuốt Sterak", "Giáp Gai", "Giáp Tâm Linh", "Trái Tim Khổng Thần", "Vũ Điệu Tử Thần"],
+        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Vòng Tròn Tử Vong", "Phản Đòn", "Chấn Động", "Siêu Công Nghệ", "Lõi Công Nghệ"]
+    },
+    "Ivern": {
+        name: "Ivern",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Trượng Pha Lê Rylai", "Vương Miện Suy Vong", "Mũ Phù Thủy Rabadon", "Bình Thải Học Thuật"],
+        augments: ["Khiên Thần", "Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Siêu Công Nghệ", "Hỏa Khuẩn", "Pháp Sư Đa Chú"]
+    },
+    "Janna": {
+        name: "Janna",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Vương Miện Suy Vong", "Bình Thải Học Thuật", "Mũ Phù Thủy Rabadon", "Trọng Bệnh"],
+        augments: ["Khiên Thần", "Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Tốc Độ Kinh Hoàng", "Ác Quỷ Hiển Nhiên", "Siêu Công Nghệ", "Bánh Mì Và Bơ"]
+    },
+    "JarvanIV": {
+        name: "Jarvan IV",
+        build: ["Rìu Đen", "Nguyệt Thần", "Móng Vuốt Sterak", "Giáp Gai", "Giáp Tâm Linh", "Vũ Điệu Tử Thần"],
+        augments: ["Khổng Lồ Hóa", "Chấn Động", "Phản Đòn", "Cuồng Huyết", "Lõi Công Nghệ", "Tốc Độ Kinh Hoàng", "Siêu Công Nghệ"]
+    },
+    "Jayce": {
+        name: "Jayce",
+        build: ["Thần Kiếm Muramana", "Nguyệt Thần", "Rìu Đen", "Thương Phục Hận Serylda", "Kiếm Ma Youmuu", "Áo Choàng Bóng Tối"],
+        augments: ["Lõi Công Nghệ", "Chấn Động", "Tốc Độ Kinh Hoàng", "Gia Tốc Kỹ Thuật", "Biến Ảo", "Bản Giao Hưởng Chiến Tranh", "Cuồng Huyết"]
+    },
+    "Kalista": {
+        name: "Kalista",
+        build: ["Gươm Suy Vong", "Cuồng Đao Guinsoo", "Móc Diệt Thủy Quái", "Cuồng Cung Runaan", "Huyết Kiếm", "Nỏ Thần Dominik"],
+        augments: ["Song Kiếm", "Tăng Tốc", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Đạn Nổ", "Lõi Công Nghệ", "Biến Ảo"]
+    },
+    "Karthus": {
+        name: "Karthus",
+        build: ["Mặt Nạ Liandry", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Quyền Trượng Đại Thiên Sứ", "Trượng Pha Lê Rylai"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Găng Tay Bảo Thạch", "Vòng Tròn Tử Vong", "Siêu Công Nghệ"]
+    },
+    "Kayle": {
+        name: "Kayle",
+        build: ["Nanh Nashor", "Cuồng Đao Guinsoo", "Mũ Phù Thủy Rabadon", "Móc Diệt Thủy Quái", "Trượng Hư Vô", "Đao Tím"],
+        augments: ["Ảo Ảnh", "Song Kiếm", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Kiếm Phép", "Tốc Độ Kinh Hoàng", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Kindred": {
+        name: "Kindred",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Súng Hải Tặc", "Nỏ Thần Dominik", "Huyết Kiếm", "Gươm Suy Vong"],
+        augments: ["Ảo Ảnh", "Đạn Nổ", "Tốc Độ Kinh Hoàng", "Song Kiếm", "Biến Ảo", "Lõi Công Nghệ", "Lướt Phép"]
+    },
+    "Kled": {
+        name: "Kled",
+        build: ["Rìu Đen", "Rìu Mãng Xà", "Móng Vuốt Sterak", "Giáp Gai", "Giáp Tâm Linh", "Vũ Điệu Tử Thần"],
+        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Thợ Săn Huyết Đao", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Siêu Công Nghệ"]
+    },
+    "Ksante": {
+        name: "K'Sante",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Găng Tay Băng Giá", "Móng Vuốt Sterak"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Khiên Thần", "Siêu Công Nghệ", "Chấn Động", "Lõi Công Nghệ", "Vòng Tròn Tử Vong"]
+    },
+    "Leona": {
+        name: "Leona",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Lời Thề Hiệp Sĩ", "Mặt Nạ Vực Thẳm"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Khiên Thần", "Siêu Công Nghệ", "Chấn Động", "Vòng Tròn Tử Vong", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Lulu": {
+        name: "Lulu",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Bình Thải Học Thuật", "Vương Miện Suy Vong", "Mũ Phù Thủy Rabadon", "Trọng Bệnh"],
+        augments: ["Khiên Thần", "Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Siêu Công Nghệ", "Pháp Sư Đa Chú", "Bánh Mì Và Bơ"]
+    },
+    "Maokai": {
+        name: "Maokai",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Giáp Tâm Linh", "Khiên Thái Dương"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Hỏa Khuẩn", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Ác Quỷ Hiển Nhiên", "Khiên Thần"]
+    },
+    "Milio": {
+        name: "Milio",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Bình Thải Học Thuật", "Dây Chuyền Iron Solari", "Mũ Phù Thủy Rabadon", "Lư Hương Sôi Sục"],
+        augments: ["Khiên Thần", "Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Siêu Công Nghệ", "Ác Quỷ Hiển Nhiên", "Khiên Thần", "Pháp Sư Đa Chú"]
+    },
+    "MonkeyKing": {
+        name: "Wukong",
+        build: ["Rìu Đen", "Tam Hợp Kiếm", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Tâm Linh", "Rìu Mãng Xà"],
+        augments: ["Ảo Ảnh", "Khổng Lồ Hóa", "Cuồng Huyết", "Chấn Động", "Tốc Độ Kinh Hoàng", "Phản Đòn", "Lõi Công Nghệ"]
+    },
+    "Nami": {
+        name: "Nami",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Bình Thải Học Thuật", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Lư Hương Sôi Sục"],
+        augments: ["Vòng Tròn Tử Vong", "Khiên Thần", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Siêu Công Nghệ"]
+    },
+    "Nasus": {
+        name: "Nasus",
+        build: ["Tam Hợp Kiếm", "Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Rìu Đen"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Cú Đấm Huyền Bí", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Hỏa Khuẩn", "Kiếm Phép"]
+    },
+    "Neeko": {
+        name: "Neeko",
+        build: ["Đai Tên Lửa Hextech", "Đồng Hồ Cát Zhonya", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Trượng Pha Lê Rylai"],
+        augments: ["Biến Ảo", "Ảo Ảnh", "Găng Tay Bảo Thạch", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên", "Tên Lửa Phép Thuật", "Hỏa Khuẩn"]
+    },
+    "Nilah": {
+        name: "Nilah",
+        build: ["Huyết Kiếm", "Nỏ Tử Thủ", "Vô Cực Kiếm", "Vũ Điệu Tử Thần", "Nỏ Thần Dominik", "Rìu Đen"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Lưỡi Dao Chết Chóc", "Biến Ảo", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Nocturne": {
+        name: "Nocturne",
+        build: ["Gươm Suy Vong", "Móng Vuốt Ám Muội", "Vô Cực Kiếm", "Rìu Đen", "Huyết Kiếm", "Vũ Điệu Tử Thần"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Ảo Ảnh", "Tốc Độ Kinh Hoàng", "Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Chấn Động"]
+    },
+    "Orianna": {
+        name: "Orianna",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Bão Tố Luden"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Hỏa Khuẩn", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Găng Tay Bảo Thạch", "Siêu Công Nghệ", "Khiên Thần"]
+    },
+    "Qiyana": {
+        name: "Qiyana",
+        build: ["Kiếm Ma Youmuu", "Áo Choàng Bóng Tối", "Thương Phục Hận Serylda", "Rìu Đen", "Nguyên Tố Luân", "Rìu Mãng Xà"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Ảo Ảnh", "Chấn Động", "Lõi Công Nghệ", "Lưỡi Dao Chết Chóc", "Tốc Độ Kinh Hoàng"]
+    },
+    "Quinn": {
+        name: "Quinn",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Súng Hải Tặc", "Nỏ Thần Dominik", "Huyết Kiếm", "Nỏ Tử Thủ"],
+        augments: ["Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Biến Ảo", "Lưỡi Dao Chết Chóc", "Đạn Nổ", "Sát Thủ Săn Đuổi", "Song Kiếm"]
+    },
+    "Rakan": {
+        name: "Rakan",
+        build: ["Trấn Hồn Linh", "Vương Miện Suy Vong", "Trượng Pha Lê Rylai", "Giáp Tâm Linh", "Dây Chuyền Iron Solari", "Mũ Phù Thủy Rabadon"],
+        augments: ["Biến Ảo", "Vòng Tròn Tử Vong", "Khổng Lồ Hóa", "Gia Tốc Kỹ Thuật", "Khiên Thần", "Chấn Động", "Siêu Công Nghệ"]
+    },
+    "Rammus": {
+        name: "Rammus",
+        build: ["Giáp Gai", "Trái Tim Khổng Thần", "Khiên Thái Dương", "Giáp Liệt Sĩ", "Giáp Tâm Linh", "Mặt Nạ Vực Thẳm"],
+        augments: ["Phản Đòn", "Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Siêu Công Nghệ", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Vòng Tròn Tử Vong"]
+    },
+    "RekSai": {
+        name: "Rek'Sai",
+        build: ["Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Gai", "Giáp Tâm Linh", "Rìu Mãng Xà"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Chấn Động", "Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"]
+    },
+    "Rell": {
+        name: "Rell",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Lời Thề Hiệp Sĩ", "Khiên Thái Dương", "Giáp Tâm Linh", "Tụ Bão Zeke"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Khiên Thần", "Vòng Tròn Tử Vong"]
+    },
+    "Renata": {
+        name: "Renata Glasc",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Bình Thải Học Thuật", "Trượng Pha Lê Rylai", "Vương Miện Suy Vong", "Mũ Phù Thủy Rabadon"],
+        augments: ["Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Khiên Thần", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Siêu Công Nghệ"]
+    },
+    "Ryze": {
+        name: "Ryze",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Động Cơ Vũ Trụ", "Trượng Trường Sinh"],
+        augments: ["Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Gia Tốc Kỹ Thuật", "Hỏa Khuẩn", "Khiên Thần", "Siêu Công Nghệ", "Bánh Mì Và Bơ"]
+    },
+    "Sejuani": {
+        name: "Sejuani",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Khiên Thái Dương", "Giáp Tâm Linh", "Mặt Nạ Vực Thẳm", "Lời Thề Hiệp Sĩ"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Chấn Động", "Bản Giao Hưởng Chiến Tranh", "Khiên Thần", "Vòng Tròn Tử Vong"]
+    },
+    "Shyvana": {
+        name: "Shyvana",
+        build: ["Quyền Trượng Ác Thần", "Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Nanh Nashor", "Mũ Phù Thủy Rabadon", "Giáp Tâm Linh"],
+        augments: ["Khổng Lồ Hóa", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Vòng Tròn Tử Vong", "Cuồng Huyết", "Siêu Công Nghệ", "Phản Đòn"]
+    },
+    "Sivir": {
+        name: "Sivir",
+        build: ["Móc Diệt Thủy Quái", "Vô Cực Kiếm", "Cuồng Cung Runaan", "Nỏ Thần Dominik", "Huyết Kiếm", "Lưỡi Hái Linh Hồn"],
+        augments: ["Đạn Nổ", "Song Kiếm", "Tốc Độ Kinh Hoàng", "Tăng Tốc", "Ảo Ảnh", "Lõi Công Nghệ", "Biến Ảo"]
+    },
+    "Skarner": {
+        name: "Skarner",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Khiên Thái Dương", "Giáp Tâm Linh", "Rìu Đen", "Móng Vuốt Sterak"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Siêu Công Nghệ", "Chấn Động", "Tốc Độ Kinh Hoàng", "Bản Giao Hưởng Chiến Tranh", "Khiên Thần"]
+    },
+    "Sona": {
+        name: "Sona",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Vương Miện Suy Vong", "Bình Thải Học Thuật", "Mũ Phù Thủy Rabadon", "Quyền Trượng Đại Thiên Sứ"],
+        augments: ["Khiên Thần", "Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Bánh Mì Và Bơ"]
+    },
+    "Soraka": {
+        name: "Soraka",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Bình Thải Học Thuật", "Dây Chuyền Iron Solari", "Giáp Tâm Linh", "Mũ Phù Thủy Rabadon"],
+        augments: ["Vòng Tròn Tử Vong", "Khiên Thần", "Gia Tốc Kỹ Thuật", "Siêu Công Nghệ", "Hỏa Khuẩn", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên"]
+    },
+    "TahmKench": {
+        name: "Tahm Kench",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Mặt Nạ Liandry", "Mũ Phù Thủy Rabadon"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong", "Khiên Thần", "Siêu Công Nghệ", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên"]
+    },
+    "Taliyah": {
+        name: "Taliyah",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô", "Bão Tố Luden"],
+        augments: ["Gia Tốc Kỹ Thuật", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Găng Tay Bảo Thạch", "Tốc Độ Kinh Hoàng", "Tên Lửa Phép Thuật"]
+    },
+    "Taric": {
+        name: "Taric",
+        build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Lời Thề Hiệp Sĩ", "Khiên Thái Dương", "Dây Chuyền Iron Solari"],
+        augments: ["Khổng Lồ Hóa", "Khiên Thần", "Phản Đòn", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Bản Giao Hưởng Chiến Tranh", "Chấn Động"]
+    },
+    "Trundle": {
+        name: "Trundle",
+        build: ["Gươm Suy Vong", "Tam Hợp Kiếm", "Rìu Mãng Xà", "Móng Vuốt Sterak", "Giáp Tâm Linh", "Giáp Gai"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa", "Tốc Độ Kinh Hoàng", "Phản Đòn", "Cú Đấm Huyền Bí", "Lõi Công Nghệ"]
+    },
+    "Tryndamere": {
+        name: "Tryndamere",
+        build: ["Gươm Suy Vong", "Vô Cực Kiếm", "Nỏ Tử Thủ", "Rìu Đen", "Ma Vũ Song Kiếm", "Vũ Điệu Tử Thần"],
+        augments: ["Lưỡi Dao Chết Chóc", "Cuồng Huyết", "Tốc Độ Kinh Hoàng", "Song Kiếm", "Ảo Ảnh", "Chấn Động", "Lõi Công Nghệ"]
+    },
+    "TwistedFate": {
+        name: "Twisted Fate",
+        build: ["Bão Tố Luden", "Kiếm Tai Ương", "Mũ Phù Thủy Rabadon", "Ngọn Lửa Hắc Ám", "Trượng Hư Vô", "Nanh Nashor"],
+        augments: ["Pháp Sư Đa Chú", "Kiếm Phép", "Ác Quỷ Hiển Nhiên", "Gia Tốc Kỹ Thuật", "Biến Ảo", "Găng Tay Bảo Thạch", "Bản Giao Hưởng Chiến Tranh"]
+    },
+    "Udyr": {
+        name: "Udyr",
+        build: ["Trái Tim Khổng Thần", "Trượng Pha Lê Rylai", "Giáp Gai", "Giáp Tâm Linh", "Quyền Trượng Ác Thần", "Khiên Thái Dương"],
+        augments: ["Khổng Lồ Hóa", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Cuồng Huyết", "Vòng Tròn Tử Vong", "Hỏa Khuẩn", "Siêu Công Nghệ"]
+    },
+    "Velkoz": {
+        name: "Vel'Koz",
+        build: ["Mặt Nạ Liandry", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Quyền Trượng Đại Thiên Sứ", "Kính Nhắm Bất Ngờ"],
+        augments: ["Pháp Sư Đa Chú", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Gia Tốc Kỹ Thuật", "Găng Tay Bảo Thạch", "Tên Lửa Phép Thuật", "Bánh Mì Và Bơ"]
+    },
+    "Vex": {
+        name: "Vex",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Trượng Hư Vô", "Kính Nhắm Bất Ngờ"],
+        augments: ["Găng Tay Bảo Thạch", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Tên Lửa Phép Thuật", "Hỏa Khuẩn", "Gia Tốc Kỹ Thuật", "Biến Ảo"]
+    },
+    "Viego": {
+        name: "Viego",
+        build: ["Gươm Suy Vong", "Rìu Đen", "Vũ Điệu Tử Thần", "Móng Vuốt Sterak", "Vô Cực Kiếm", "Huyết Kiếm"],
+        augments: ["Cuồng Huyết", "Ảo Ảnh", "Sát Thủ Săn Đuổi", "Biến Ảo", "Tốc Độ Kinh Hoàng", "Lưỡi Dao Chết Chóc", "Chấn Động"]
+    },
+    "XinZhao": {
+        name: "Xin Zhao",
+        build: ["Tam Hợp Kiếm", "Rìu Đen", "Móng Vuốt Sterak", "Vũ Điệu Tử Thần", "Giáp Tâm Linh", "Gươm Suy Vong"],
+        augments: ["Cuồng Huyết", "Thợ Săn Huyết Đao", "Khổng Lồ Hóa", "Cú Đấm Huyền Bí", "Chấn Động", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ"]
+    },
+    "Yorick": {
+        name: "Yorick",
+        build: ["Rìu Đen", "Móng Vuốt Sterak", "Rìu Đại Mãng Xà", "Giáp Gai", "Giáp Tâm Linh", "Găng Tay Băng Giá"],
+        augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Phản Đòn", "Siêu Công Nghệ", "Hỏa Khuẩn", "Vòng Tròn Tử Vong", "Lõi Công Nghệ"]
+    },
+    "Yuumi": {
+        name: "Yuumi",
+        build: ["Trấn Hồn Linh", "Bất Hủ Ngôn Từ", "Vương Miện Suy Vong", "Bình Thải Học Thuật", "Mũ Phù Thủy Rabadon", "Lư Hương Sôi Sục"],
+        augments: ["Khiên Thần", "Vòng Tròn Tử Vong", "Gia Tốc Kỹ Thuật", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Siêu Công Nghệ", "Hỏa Khuẩn"]
+    },
+    "Zilean": {
+        name: "Zilean",
+        build: ["Quyền Trượng Đại Thiên Sứ", "Trượng Pha Lê Rylai", "Mũ Phù Thủy Rabadon", "Đồng Hồ Cát Zhonya", "Ngọn Lửa Hắc Ám", "Bão Tố Luden"],
+        augments: ["Gia Tốc Kỹ Thuật", "Khiên Thần", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Hỏa Khuẩn", "Tốc Độ Kinh Hoàng", "Siêu Công Nghệ"]
+    },
+    "Zoe": {
+        name: "Zoe",
+        build: ["Bão Tố Luden", "Ngọn Lửa Hắc Ám", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Kính Nhắm Bất Ngờ", "Đồng Hồ Cát Zhonya"],
+        augments: ["Biến Ảo", "Tên Lửa Phép Thuật", "Ác Quỷ Hiển Nhiên", "Gia Tốc Kỹ Thuật", "Pháp Sư Đa Chú", "Găng Tay Bảo Thạch", "Ảo Ảnh"]
+    }
+    "Jhin": {
+        name: "Jhin",
+        build: ["Súng Hải Tặc", "Vô Cực Kiếm", "Nỏ Thần Dominik", "Đại Bác Liên Thanh", "Huyết Kiếm", "Ma Vũ Song Kiếm"],
+        augments: ["Lưỡi Dao Chết Chóc", "Tăng Tốc", "Biến Ảo", "Tốc Độ Kinh Hoàng", "Ảo Ảnh", "Sát Thủ Săn Đuổi", "Lõi Công Nghệ"]
+    },
+    "Nidalee": {
+        name: "Nidalee",
+        build: ["Quyền Trượng Ác Thần", "Kiếm Tai Ương", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Ngọn Lửa Hắc Ám", "Đồng Hồ Cát Zhonya"],
+        augments: ["Biến Ảo", "Kiếm Phép", "Tên Lửa Phép Thuật", "Sát Thủ Săn Đuổi", "Ảo Ảnh", "Pháp Sư Đa Chú", "Ác Quỷ Hiển Nhiên"]
+    },
+    "Evelynn": {
+        name: "Evelynn",
+        build: ["Quyền Trượng Ác Thần", "Mũ Phù Thủy Rabadon", "Trượng Hư Vô", "Đồng Hồ Cát Zhonya", "Ngọn Lửa Hắc Ám", "Kiếm Tai Ương"],
+        augments: ["Sát Thủ Săn Đuổi", "Biến Ảo", "Ảo Ảnh", "Ác Quỷ Hiển Nhiên", "Pháp Sư Đa Chú", "Lướt Phép", "Tên Lửa Phép Thuật"]
     }
 };
 
