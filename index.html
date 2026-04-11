@@ -484,7 +484,7 @@ const championData = {
         build: ["Trái Tim Khổng Thần", "Khiên Thái Dương", "Giáp Gai", "Mặt Nạ Liandry", "Trượng Pha Lê Rylai", "Giáp Tâm Linh"],
         augments: ["Khổng Lồ Hóa", "Phản Đòn", "Vòng Tròn Tử Vong", "Siêu Công Nghệ", "Hỏa Khuẩn", "Ác Quỷ Hiển Nhiên", "Chấn Động"]
     },
-    "Mundo": {
+    "DrMundo": {
         name: "Dr. Mundo",
         build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Móng Vuốt Sterak", "Rìu Đại Mãng Xà"],
         augments: ["Khổng Lồ Hóa", "Vòng Tròn Tử Vong", "Phản Đòn", "Siêu Công Nghệ", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Khiên Thần"]
@@ -754,7 +754,7 @@ const championData = {
         build: ["Rìu Đen", "Rìu Mãng Xà", "Móng Vuốt Sterak", "Giáp Gai", "Giáp Tâm Linh", "Vũ Điệu Tử Thần"],
         augments: ["Khổng Lồ Hóa", "Cuồng Huyết", "Thợ Săn Huyết Đao", "Phản Đòn", "Tốc Độ Kinh Hoàng", "Lõi Công Nghệ", "Siêu Công Nghệ"]
     },
-    "Ksante": {
+    "KSante": {
         name: "K'Sante",
         build: ["Trái Tim Khổng Thần", "Giáp Gai", "Giáp Tâm Linh", "Khiên Thái Dương", "Găng Tay Băng Giá", "Móng Vuốt Sterak"],
         augments: ["Khổng Lồ Hóa", "Phản Đòn", "Khiên Thần", "Siêu Công Nghệ", "Chấn Động", "Lõi Công Nghệ", "Vòng Tròn Tử Vong"]
@@ -1020,7 +1020,7 @@ function showAllChampions() {
 function renderCard(key) {
     const resultsContainer = document.getElementById('search-results');
     const champ = championData[key];
-    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
+    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/16.7.1/img/champion/${key}.png`;
     
     const card = document.createElement('div');
     card.className = "info-card";
@@ -1044,7 +1044,7 @@ function renderCard(key) {
     const detailView = document.getElementById('detail-view');
     const searchView = document.getElementById('search-view');
     const content = document.getElementById('detail-content');
-    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/14.8.1/img/champion/${key}.png`;
+    const imgUrl = `https://ddragon.leagueoflegends.com/cdn/16.7.1/img/champion/${key}.png`;
 
     searchView.style.display = 'none';
     detailView.style.display = 'block';
